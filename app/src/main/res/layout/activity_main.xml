@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.example.myprogressdci.seekbar.CpnSeekbarDciLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp">
+
+                <com.example.myprogressdci.seekbar.CpnSeekbarDci
+                    android:id="@+id/dci_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:sb_dci_end="100"
+                    app:sb_dci_min="90"
+                    app:sb_dci_progress="50"
+                    app:sb_dci_start="0"
+                    app:sb_dci_thumb_size="30dp"
+                    app:sb_dci_track_background_color="@android:color/darker_gray"
+                    app:sb_dci_track_progress_color="@color/purple_500"
+                    app:sb_dci_track_size="15dp" />
+
+            </com.example.myprogressdci.seekbar.CpnSeekbarDciLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+                <include layout="@layout/item_layout"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</LinearLayout>

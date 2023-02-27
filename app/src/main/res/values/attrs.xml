@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CpnSeekbarDci">
+        // seekbar
+        <attr name="sb_dci_end" format="float"/><!--the end value of seekbar, default 100-->
+        <attr name="sb_dci_min" format="float"/><!--the minimum value of seekbar, default equals with start-->
+        <attr name="sb_dci_start" format="float"/><!--the start value of seekbar to seek, default 0-->
+        <attr name="sb_dci_progress" format="float"/><!--the progress value of seekbar to seek, default 0-->
+        <attr name="sb_dci_is_clear_padding" format="boolean"/><!--remove default padding, default false-->
+        // track
+        <attr name="sb_dci_track_size" format="dimension|reference"/><!--set track size, default 8dp-->
+        <attr name="sb_dci_track_background_color" format="color|reference"/><!--set background track color, default #D7D7D7-->
+        <attr name="sb_dci_track_progress_color" format="color|reference"/><!--set progress track color, default #000000-->
+        // thumb
+        <attr name="sb_dci_thumb_size" format="dimension|reference"/><!--set thumb size, default 25dp-->
+    </declare-styleable>
+</resources>

@@ -9,9 +9,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.DisplayMetrics
 import android.view.View
-import android.view.WindowManager
 import androidx.core.content.res.ResourcesCompat
 import com.example.myprogressdci.R
 import kotlin.math.roundToInt
@@ -244,11 +242,11 @@ class CpnSeekbarDci : View {
         )
 
         val dynamicProgress = arrayListOf<DynamicProgressDCI>()
-        list.forEach { item ->
+        list.forEachIndexed { index, item ->
             val progressThumbDrawable = CpnSeekbarDciThumbDrawable.getDrawable(
                 context,
                 if (item < progressValue) CpnSeekbarDciThumbTypeDrawable.PROGRESS else CpnSeekbarDciThumbTypeDrawable.END,
-                item
+                progressList[index].roundToInt()
             )
 
             val paint = Paint()
@@ -263,7 +261,7 @@ class CpnSeekbarDci : View {
             paint.strokeWidth = trackSize.toFloat()
 
             val progressBitmap = getDrawBitmap(progressThumbDrawable) ?: throw IllegalArgumentException("Progress thumb drawable not found!")
-            dynamicProgress.add(DynamicProgressDCI(track, progressBitmap, item))
+            dynamicProgress.add(DynamicProgressDCI(track, progressBitmap, item.roundToInt()))
         }
 
         val isProgressNow = dynamicProgress.firstOrNull { it.value == progressValue.roundToInt() }
@@ -333,7 +331,7 @@ class CpnSeekbarDci : View {
         progressThumbDrawable = CpnSeekbarDciThumbDrawable.getDrawable(
             context,
             CpnSeekbarDciThumbTypeDrawable.PROGRESS,
-            progressValue.roundToInt()
+            progressLabel
         )
 
         val progressCenterX = progressTrack.right
@@ -543,9 +541,11 @@ class CpnSeekbarDci : View {
         this.indicatorStayAlways = indicatorStayAlways
     }
 
+    private var progressLabel = 0
     @Synchronized
-    fun setLabelText(text: String) {
-        indicator?.updateLabelText(text)
+    fun setLabelText(text: String, progressLabel: Int) {
+        indicator?.updateLabelText("$text $progressLabel")
+        this.progressLabel = progressLabel
     }
 
     @Synchronized
@@ -572,10 +572,17 @@ class CpnSeekbarDci : View {
         postInvalidate()
     }
 
-    private var list = listOf<Int>()
+    private var list = listOf<Float>()
     @Synchronized
-    fun setList(list: List<Int>){
+    fun setList(list: List<Float>){
         this.list = list
+        postInvalidate()
+    }
+
+    private var progressList = listOf<Float>()
+    @Synchronized
+    fun setProgressList(list: List<Float>){
+        this.progressList = list
         postInvalidate()
     }
 
